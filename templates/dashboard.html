@@ -13,6 +13,8 @@
     {% for order in orders %}
     <tr>
     <td><a href="{% url 'update_order' order.id %}"><button type="button" class="btn btnsuccess">Update Order</button></a></td>
+    <td><a href="{% url 'delete_order' order.id %}"><button type="button" class="btn btn-success">Delete 
+        Order</button></a></td>
     <td>{{order.customer}}</td>
     <td>{{order.product}}</td>
     <td>{{order.status}}</td>
@@ -22,4 +24,5 @@
 <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
 <a href="{% url 'create_order' %}"><button type="button" class="btn btn-success">Create Order</
     button></a>
+
 {% endblock %}
