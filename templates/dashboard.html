@@ -1,6 +1,25 @@
-{% extends 'base.html' %}
-
+{%extends 'base.html'%}
 {% block content %}
-    <h1>Welcome to the Dashboard!</h1>
-    <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
+<h1>Dashboard</h1>
+&nbsp;
+<table class="table">
+    <tr>
+    <th>Update</th>
+    <th>Delete</th>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Status</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+    <td><a href="{% url 'update_order' order.id %}"><button type="button" class="btn btnsuccess">Update Order</button></a></td>
+    <td>{{order.customer}}</td>
+    <td>{{order.product}}</td>
+    <td>{{order.status}}</td>
+ </tr>
+ {% endfor %}
+</table>
+<a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
+<a href="{% url 'create_order' %}"><button type="button" class="btn btn-success">Create Order</
+    button></a>
 {% endblock %}
