@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import *
-from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html')
@@ -38,6 +37,7 @@ def createOrder(request):
 
     context={'form':form}
     return render(request,'order_form.html',context)
+from django.contrib import messages
 
 def updateOrder(request, pk):
 
