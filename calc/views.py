@@ -83,18 +83,32 @@ def deleteOrder(request, pk):
     return render(request,'delete.html',context) 
 
 from django.contrib.auth.forms import UserCreationForm 
+from .forms import CreateUserForm
+# def registerPage(request): 
+#     form=UserCreationForm() 
+#     if request.method=="POST": 
+#         form=UserCreationForm(request.POST) 
+#         if form.is_valid(): 
+#             form.save() 
+#             return redirect('login') 
+#         else: 
+#             messages.success(request,"Password does not follow the rules") 
+            
+#     context={'form':form} 
+#     return render(request, 'register.html', context)
+
 def registerPage(request): 
-    form=UserCreationForm() 
+    form=CreateUserForm() 
     if request.method=="POST": 
-        form=UserCreationForm(request.POST) 
+        form=CreateUserForm(request.POST) 
         if form.is_valid(): 
             form.save() 
             return redirect('login') 
         else: 
             messages.success(request,"Password does not follow the rules") 
-            
     context={'form':form} 
     return render(request, 'register.html', context)
+
 
 def loginPage(request): 
     if request.user.is_authenticated: 

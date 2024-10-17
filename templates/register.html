@@ -1,5 +1,31 @@
-<form method="POST" action=""> 
+{% comment %} <form method="POST" action=""> 
     {% csrf_token %} 
 {{form}} 
 <input type="submit" name="Create User"> 
-</form>
+</form> {% endcomment %}
+
+<h1>Register</h1> 
+<form method="POST" action=""> 
+    {% csrf_token %} 
+    {{form.username.label}} 
+    {{form.username}} 
+
+ <br> 
+<br> 
+    {{form.email.label}} 
+    {{form.email}} 
+<br> 
+<br> 
+    {{form.password1.label}} 
+    {{form.password1}} 
+<br> 
+<br> 
+    {{form.password2.label}} 
+    {{form.password2}} 
+<br> 
+<br> 
+<input type="submit" name="Create User"> 
+</form> 
+{% for message in messages %} 
+<p id="messages">{{message}} </p> 
+{% endfor %}
