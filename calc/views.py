@@ -132,3 +132,16 @@ def loginPage(request):
 def logoutPage(request): 
     logout(request) 
     return redirect('login') 
+def create(request):
+    return render(request,'customersinfo.html')
+from django.shortcuts import redirect
+
+def insertData(request):
+    if request.method == 'POST':
+        n = request.POST['nameVar']
+        a = request.POST['ageVar']
+        Customer.objects.create(name=n, age=a)
+        return redirect('/insertData')
+    else:
+        customers = Customer.objects.all()
+        return render(request, 'customersinfo.html', {'customers': customers})
